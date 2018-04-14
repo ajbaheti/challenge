@@ -43,7 +43,7 @@
                 title: "Product Title 1",
                 price: 500,
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                imgPath: "materials/images/cereal_b.jpg",
+                imgPath: "assets/images/cereal_b.jpg",
                 fullText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. " +
                 "Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. " +
                 "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. " +
@@ -58,7 +58,7 @@
                 title: "Product Title 2",
                 price: 1900,
                 text: "Donec ornare magna sit amet erat molestie sollicitudin ac vitae lectus.",
-                imgPath: "materials/images/flower_b.jpg",
+                imgPath: "assets/images/flower_b.jpg",
                 fullText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. " +
                 "Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. " +
                 "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. " +
@@ -74,7 +74,7 @@
                 title: "Product Title 3",
                 price: 2730,
                 text: "Cras non metus sed odio tristique imperdiet.",
-                imgPath: "materials/images/machine_b.jpg",
+                imgPath: "assets/images/machine_b.jpg",
                 fullText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. " +
                 "Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. " +
                 "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. " +
@@ -90,7 +90,7 @@
                 title: "Product Title 4",
                 price: 731,
                 text: "Pellentesque mattis tellus ut molestie dapibus.",
-                imgPath: "materials/images/candy_b.jpg",
+                imgPath: "assets/images/candy_b.jpg",
                 fullText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. " +
                 "Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. " +
                 "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. " +
@@ -181,7 +181,7 @@
                         '<div layout="row">' +
                         '<h1 style="margin:0;"> {{state}} </h1><div flex></div>' +
                         '<span style="cursor:pointer;outline:none;color:#002b5a;font-style:italic;" ng-click="closeDialog()"> close ' +
-                        '<img src="materials/images/close.png" ' +
+                        '<img src="assets/images/close.png" ' +
                             'style="width:12px;height:12px;margin-left:5px;cursor:pointer;outline:none;" /></span></div>' +
                         '<div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ' +
                             'labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' +

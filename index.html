@@ -12,14 +12,14 @@
     <body ng-app="testApp" ng-controller="DemoCtrl as ctrl" ng-cloak>
 
         <div>
-            <img class="bannerImg" src="materials/images/banner.jpg" />
+            <img class="bannerImg" src="assets/images/banner.jpg" />
             <div hide-xs class="socialIcons" layout="row" layout-align="end end">
                 <span> Connect:</span>
-                <img src="materials/images/fb.png" class="socialMedia" />
-                <img src="materials/images/twitter.png" class="socialMedia" />
-                <img src="materials/images/pinterest.png" class="socialMedia" />
-                <img src="materials/images/blog.png" class="socialMedia" />
-                <img src="materials/images/email.png" class="socialMedia" />
+                <img src="assets/images/fb.png" class="socialMedia" />
+                <img src="assets/images/twitter.png" class="socialMedia" />
+                <img src="assets/images/pinterest.png" class="socialMedia" />
+                <img src="assets/images/blog.png" class="socialMedia" />
+                <img src="assets/images/email.png" class="socialMedia" />
             </div>
         </div>
 
@@ -61,7 +61,7 @@
                                         <span style="color:#002b5a;font-size:12px;" md-highlight-text="ctrl.searchText">{{item.display}}</span>
                                     </md-item-template>
                                 </md-autocomplete>
-                                <img md-whiteframe="1dp" src="materials/images/search.png" style="height:20px;background-color:white;padding:10px;margin-top:10px;"/>
+                                <img md-whiteframe="1dp" src="assets/images/search.png" style="height:20px;background-color:white;padding:10px;margin-top:10px;"/>
                             </span>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                                 <p style="font-size:12px;text-align:justify;margin:0;">{{singleGravida.subtext}}</p>
                             </div>
                             <div class="learnMoreGravida" flex="25" flex-sm="100" flex-xs="100">
-                                Learn More <span style="margin-left:5px;"><img src="materials/images/arrow-btn-blue.png" /></span></div>
+                                Learn More <span style="margin-left:5px;"><img src="assets/images/arrow-btn-blue.png" /></span></div>
                         </div>
                     </div>
 
@@ -111,7 +111,7 @@
                                 <img src={{product.imgPath}} style="max-width:90%;display:block;"/>
                             </div>
                             <div flex="10" flex-sm="10" flex-xs="100" style="font-size:13px;color:#002b5a;" layout="row" layout-align="start end">
-                                Learn More <span style="margin-left:5px;"><img src="materials/images/arrow-btn-blue.png" /></span></div>
+                                Learn More <span style="margin-left:5px;"><img src="assets/images/arrow-btn-blue.png" /></span></div>
                         </div>
                     </div>
 
@@ -120,8 +120,8 @@
                         <div layout="row">
                             <h1 style="margin:0;font-size:24px;color:#002b5a;">{{ctrl.selectedProduct.title}}</h1>
                             <div flex></div>
-                            <img src="materials/images/close.png" style="width:20px;height:20px;margin:10px;cursor:pointer;outline:none;"
-                                    ng-click="ctrl.closeProduct()"/>
+                            <img src="assets/images/close.png" style="width:20px;height:20px;margin:10px;cursor:pointer;outline:none;"
+                                 ng-click="ctrl.closeProduct()"/>
                         </div>
 
                         <div>
@@ -147,7 +147,7 @@
                                     </li>
                                 </ul>
                                 <div class="buyOnline">Buy Online <span style="margin-left:5px;">
-                                    <img src="materials/images/arrow-btn-white.png" /></span>
+                                    <img src="assets/images/arrow-btn-white.png" /></span>
                                 </div>
                             </div>
 
