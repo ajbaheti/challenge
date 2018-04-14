@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="styles/angular-material.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+        <link rel="stylesheet" href="styles/main.css">
+
+        <title>Test App</title>
+    </head>
+    <body ng-app="testApp" ng-controller="DemoCtrl as ctrl" ng-cloak>
+
+        <div>
+            <img class="bannerImg" src="materials/images/banner.jpg" />
+            <div hide-xs class="socialIcons" layout="row" layout-align="end end">
+                <span> Connect:</span>
+                <img src="materials/images/fb.png" class="socialMedia" />
+                <img src="materials/images/twitter.png" class="socialMedia" />
+                <img src="materials/images/pinterest.png" class="socialMedia" />
+                <img src="materials/images/blog.png" class="socialMedia" />
+                <img src="materials/images/email.png" class="socialMedia" />
+            </div>
+        </div>
+
+        <div layout="row" class="mainDiv md-padding">
+
+            <div flex hide-xs style="min-width:48px;"></div>
+
+            <div flex="90" layout="column" style="max-width:960px;">
+
+                <div layout="row" layout-xs="column" layout-sm="column">
+
+                    <div flex="60" flex-xs="100" flex-sm="100" class="md-padding">
+                        <h1>In Gravida Libero</h1>
+                        <p class="headerP">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer enim neque,
+                            molestie ut placerat id, tincidunt in sem. Pellentesque sodales lobortis eros nec pulvinar.
+                            In ac ultrices ipsum, ultricies semper nisi. Morbi ac hendrerit nulla. Sed nec ex commodo,
+                            tincidunt felis ac, iaculis ipsum.</p>
+                        <p class="headerP">Morbi ac hendrerit nulla. Sed nec ex commodo, tincidunt felis ac, iaculis ipsum</p>
+                    </div>
+
+                    <div flex="40" flex-xs="100" flex-sm="100" class="md-padding">
+                        <div md-whiteframe="2dp" style="background-color:#EEEEEE;" class="md-padding">
+                            <h2 style="font-size:20px;margin-bottom:20px;">State Finder</h2>
+                            <p style="color:#002b5a;font-size:12px;margin:0 0 5px;">Morbi ac hendrerit nulla. Sed nec ex commodo</p>
+                            <span layout="row" style="margin-bottom:15px;">
+                                <md-autocomplete flex style="margin-top:10px;"
+                                                 md-input-minlength="1"
+                                                 md-input-maxlength="18"
+                                                 md-dropdown-position="bottom"
+                                                 md-no-cache="ctrl.noCache"
+                                                 md-selected-item="ctrl.selectedItem"
+                                                 md-selected-item-change="ctrl.selectedItemChange(item,$event)"
+                                                 md-search-text="ctrl.searchText"
+                                                 md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                                 md-item-text="item.display"
+                                                 md-require-match
+                                                 placeholder="search hotels">
+                                    <md-item-template>
+                                        <span style="color:#002b5a;font-size:12px;" md-highlight-text="ctrl.searchText">{{item.display}}</span>
+                                    </md-item-template>
+                                </md-autocomplete>
+                                <img md-whiteframe="1dp" src="materials/images/search.png" style="height:20px;background-color:white;padding:10px;margin-top:10px;"/>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div md-whiteframe="2dp" style="background-color:#F3F3F3;margin-top:20px;" class="md-padding">
+
+                    <h2 style="margin-left:16px;">In Gravida</h2>
+
+                    <div layout="row" layout-xs="column layout-no-wrap"  layout-wrap>
+                        <div layout="column" layout-margin ng-repeat="singleGravida in ctrl.gravidaList" flex="30" flex-sm="100" flex-xs="100">
+                            <div flex="75" flex-sm="100" flex-xs="100">
+                                <h3 style="margin:0 0 5px;">{{singleGravida.heading}}</h3>
+                                <p style="font-size:12px;text-align:justify;margin:0;">{{singleGravida.subtext}}</p>
+                            </div>
+                            <div class="learnMoreGravida" flex="25" flex-sm="100" flex-xs="100">
+                                Learn More <span style="margin-left:5px;"><img src="materials/images/arrow-btn-blue.png" /></span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div layout="column" md-whiteframe="2dp" style="background-color:#F3F3F3;margin-top:5px;" class="md-padding">
+
+                    <div layout="row">
+                        <h2 style="margin-left:16px;">Products</h2>
+                        <div flex></div>
+                        <div style="padding-top:15px;" layout="row" layout-align="space-between start">
+                            <span hide-xs style="margin-right:10px;margin-top:5px;">Fitler by </span>
+                            <md-select style="margin:0 5px;padding:2px 5px;" ng-model="ctrl.filterVal" aria-label="filter by"
+                                    ng-change="ctrl.onFilterChange()" md-whiteframe="2dp" class="md-no-underline">
+                                <md-option ng-repeat="filter in ctrl.filters" value="{{filter}}">{{filter}}</md-option>
+                            </md-select>
+                        </div>
+                    </div>
+
+                    <div layout="row" layout-xs="column layout-no-wrap" layout-sm="row" layout-wrap>
+                        <div style="background-color:#F9F9F9;margin:5px 20px;outline:none;cursor:pointer;" layout="column" layout-margin
+                                ng-repeat="product in ctrl.filteredProducts" flex="20" flex-sm="40" flex-xs="100" ng-click="ctrl.productClicked(product.id)">
+                            <div flex="55" flex-sm="40" flex-xs="100">
+                                <h3 style="color:#002b5a;font-size:17px;margin:0;">{{product.title}}</h3>
+                                <p style="color:#4987ca;font-size:13px;margin:5px 0;">Starting at ${{product.price}}</p>
+                                <p style="font-size:13px;color:#666666;margin:5px 0;">{{product.text}}</p>
+                            </div>
+                            <div flex="35" flex-sm="50" flex-xs="100" layout-align="start start">
+                                <img src={{product.imgPath}} style="max-width:90%;display:block;"/>
+                            </div>
+                            <div flex="10" flex-sm="10" flex-xs="100" style="font-size:13px;color:#002b5a;" layout="row" layout-align="start end">
+                                Learn More <span style="margin-left:5px;"><img src="materials/images/arrow-btn-blue.png" /></span></div>
+                        </div>
+                    </div>
+
+                    <div ng-if="ctrl.prodSelected" style="background-color:#F9F9F9;margin:5px 20px" layout="column" class="md-padding" layout-margin>
+
+                        <div layout="row">
+                            <h1 style="margin:0;font-size:24px;color:#002b5a;">{{ctrl.selectedProduct.title}}</h1>
+                            <div flex></div>
+                            <img src="materials/images/close.png" style="width:20px;height:20px;margin:10px;cursor:pointer;outline:none;"
+                                    ng-click="ctrl.closeProduct()"/>
+                        </div>
+
+                        <div>
+                            <p style="margin:0;font-size:19px;color:#4987ca;">Starting at ${{ctrl.selectedProduct.price}}</p>
+                        </div>
+
+                        <div layout="row" layout-xs="column" layout-sm="column">
+
+                            <div flex="50" flex-xs="100" flex-sm="100" layout="column">
+                                <p style="margin:0;">{{ctrl.selectedProduct.fullText}}</p>
+                                <ul ng-if="ctrl.showIngreList" style="list-style:none;padding:0;">
+                                    <li layout="row">
+                                        <span class="ingreList one" ng-mouseover="ctrl.translateNum('one')" ng-mouseout="ctrl.translateOrig('one')"></span>
+                                        <span style="margin:22px 0 0 15px;">Non porta dui euismod nec</span>
+                                    </li>
+                                    <li layout="row">
+                                        <span class="ingreList two" ng-mouseover="ctrl.translateNum('two')" ng-mouseout="ctrl.translateOrig('two')"></span>
+                                        <span style="margin:18px 0 0 15px;">Ut tristique ipsum velit</span>
+                                    </li>
+                                    <li layout="row">
+                                        <span class="ingreList three" ng-mouseover="ctrl.translateNum('three')" ng-mouseout="ctrl.translateOrig('three')"></span>
+                                        <span style="margin:15px 0 0 15px;">Quisque mollis justo</span>
+                                    </li>
+                                </ul>
+                                <div class="buyOnline">Buy Online <span style="margin-left:5px;">
+                                    <img src="materials/images/arrow-btn-white.png" /></span>
+                                </div>
+                            </div>
+
+                            <div flex="50" flex-xs="100" flex-sm="100">
+                                <div>
+                                    <img src={{ctrl.selectedProduct.imgPath}} class="productDetailImage" />
+                                    <span hide-xs hide-sm ng-if="ctrl.showIngreList" class="ingreList one onePos indexStyling"
+                                          ng-mouseover="ctrl.translateNum('one')" ng-mouseout="ctrl.translateOrig('one')"></span>
+                                    <span hide-xs hide-sm ng-if="ctrl.showIngreList" class="ingreList two twoPos indexStyling"
+                                          ng-mouseover="ctrl.translateNum('two')" ng-mouseout="ctrl.translateOrig('two')"></span>
+                                    <span hide-xs hide-sm ng-if="ctrl.showIngreList" class="ingreList three threePos indexStyling"
+                                          ng-mouseover="ctrl.translateNum('three')" ng-mouseout="ctrl.translateOrig('three')"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div flex hide-xs style="min-width:48px;"></div>
+        </div>
+
+        <script type="text/javascript" src="scripts/angular.min.js"></script>
+        <script src="scripts/angular-animate.min.js"></script>
+        <script src="scripts/angular-aria.min.js"></script>
+        <script src="scripts/angular-messages.min.js"></script>
+        <script src="scripts/angular-material.min.js"></script>
+        <script type="text/javascript" src="scripts/script.js"></script>
+
+    </body>
+</html>
