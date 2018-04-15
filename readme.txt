@@ -1,3 +1,5 @@
-1. Download the repository
+1. Download the zip file
 
-2. Look for 'index.html' and open this file in browser.
+2. Unzip and look for 'index.html'.
+
+3. Open the 'index.html' file in browser.
