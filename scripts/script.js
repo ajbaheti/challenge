@@ -7,6 +7,7 @@
     function DemoCtrl($filter, $timeout, $q, $mdDialog) {
         let self = this;
 
+        /*filter list*/
         self.filters = ["All", "Less Than $500", "From $500 to $1000", "From $1000 to $2000", "$2000 or more"];
         self.filterVal = "All";
 
@@ -37,6 +38,7 @@
             }
         ];
 
+        /*variable to store all the products - original list*/
         self.products = [
             {
                 id: "product1",
@@ -102,7 +104,7 @@
                 "ullamcorper ultricies nisi. Nam eget dui."
             }
         ];
-
+        /*variable to add filtered product list*/
         self.filteredProducts = self.products;
         self.prodSelected = false;
         self.selectedProduct = null;
@@ -122,6 +124,8 @@
         self.translateNum = translateNum;
         self.translateOrig = translateOrig;
 
+        /*When user selects filter, based on filter value, look for products satisfying the condition
+        and add only those products to the array being displayed in the products*/
         function onFilterChange () {
             self.prodSelected = false;
             if (self.filterVal === "All") {
@@ -158,11 +162,18 @@
             }
         }
 
+        /*onclick of close icon in product details div, make flag 'prodSelected' to false
+        which will hide the product details div*/
         function closeProduct () {
             self.prodSelected = false;
         }
 
+        /*onclick of close icon in product details div, make flag 'prodSelected' to true
+        which will show the product details div.
+        Also, pass the product id whose information needs to be displayed and then get
+        that product details from original array*/
         function productClicked (selectedId) {
+            /*to display 1,2,3 ingredients for first product only*/
             if(selectedId === "product1")
                 self.showIngreList = true;
             else
@@ -172,6 +183,8 @@
             self.selectedProduct = $filter('filter')(self.products, {id: selectedId}, true)[0];
         }
 
+        /*when user selects an item from Autocomplete
+        take that value and display it in modal/popup box*/
         function selectedItemChange(item, ev) {
             if(item){
                 $mdDialog.show({
@@ -192,6 +205,7 @@
                 });
             }
 
+            /*controller for dialog box*/
             function DialogController ($scope, $mdDialog) {
                 $scope.state = item.display;
                 $scope.closeDialog = function() {
@@ -200,8 +214,9 @@
             }
         }
 
+        /*search for entered query in state names which returns promise for autocomplete directive*/
         function querySearch(query) {
-            let results = query ? self.states.filter(createFilterFor(query)) : self.states;
+            let results = query ? self.states.filter(searchQuery(query)) : self.states;
             let deferred = $q.defer();
             $timeout(function () {
                 deferred.resolve(results);
@@ -209,6 +224,7 @@
             return deferred.promise;
         }
 
+        /*load all the states initially*/
         function loadAll() {
             let allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
               Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
@@ -226,14 +242,16 @@
             });
         }
 
-        function createFilterFor(query) {
+        /*search function*/
+        function searchQuery(query) {
             let lowercaseQuery = angular.lowercase(query);
 
             return function filterFn(state) {
-                return (state.value.indexOf(lowercaseQuery) === 0);
+                return (state.value.indexOf(lowercaseQuery) > -1);
             };
         }
 
+        /*scale selected element on mouseover*/
         function translateNum(className) {
             let ele = document.getElementsByClassName(className);
             for(let i=0; i<ele.length; i++){
@@ -241,6 +259,7 @@
             }
         }
 
+        /*scale back the element to its original state on mouseout*/
         function translateOrig(className) {
             let ele = document.getElementsByClassName(className);
             for(let i=0; i<ele.length; i++){
